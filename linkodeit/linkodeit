@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 import sys
@@ -38,7 +38,7 @@ if __name__ == '__main__':
                         help='show all the debug information')
 
     data = {}
-    url = URLS['new'][1]
+    method, url = URLS['new']
 
     args = parser.parse_args()
 
@@ -74,8 +74,9 @@ if __name__ == '__main__':
         url = url.format(linkode_id=args.get)
 
 
-    print(data)
-    print(url)
+    logging.debug('DATA: %s', data)
+    logging.debug('URL: %s', url)
+    logging.debug('METHOD: %s', method)
 
     raw = parse.urlencode(data).encode('ascii')
     if method == 'POST':
