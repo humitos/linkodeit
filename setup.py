@@ -13,6 +13,6 @@ setup(
     download_url='https://github.com/humitos/linkodeit/tarball/0.2',
     keywords=['linkode', 'pastebin', 'paste'],
     scripts=['linkodeit/linkodeit'],
-    install_requires=['six'],
+    install_requires=['six>=1.6.1'],
     classifiers=[],
 )
