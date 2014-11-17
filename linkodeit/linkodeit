@@ -64,6 +64,11 @@ if __name__ == '__main__':
         else:
             print('The file doesn\'t exists.')
     elif not args.get:
+        # check if there is data on stdin
+        if sys.stdin.isatty():
+            parser.print_help()
+            sys.exit(0)
+
         data['content'] = sys.stdin.read()
 
     data['text_type'] = args.type
