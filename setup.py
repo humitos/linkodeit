@@ -13,6 +13,12 @@ setup(
     download_url='https://github.com/humitos/linkodeit/tarball/0.3',
     keywords=['linkode', 'pastebin', 'paste'],
     scripts=['linkodeit/linkodeit'],
-    install_requires=['six>=1.6.1'],
-    classifiers=[],
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Environment :: Console',
+        'License :: OSI Approved :: GNU General Public License (GPL)',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python :: 3 :: Only',
+        'Topic :: Utilities',
+    ],
 )
