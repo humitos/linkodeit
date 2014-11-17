@@ -6,6 +6,7 @@ import json
 import logging
 import argparse
 import commands
+import webbrowser
 
 from six.moves.urllib import parse, request
 
@@ -34,6 +35,9 @@ if __name__ == '__main__':
     parser.add_argument('-t', '--type', type=str,
                         help='the type of the content (plain text, Python, diff, C, etc.)',
                         default='plain text')
+    parser.add_argument('-o', '--open',
+                        action='store_true',
+                        help='open the default browser with the link'),
     parser.add_argument('-r', '--revision', type=int,
                         default=1,
                         help='the revision number of the node that is parent to this new one')
@@ -114,3 +118,6 @@ if __name__ == '__main__':
         print('URL copied to clipboard')
     else:
         logging.info('You can install "xclip" to copy the URL to the clipboard')
+
+    if args.open:
+        webbrowser.open(linkode_url)
