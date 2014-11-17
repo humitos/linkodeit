@@ -1,14 +1,14 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 import sys
 import json
 import logging
 import argparse
-import commands
+import subprocess
 import webbrowser
 
-from six.moves.urllib import parse, request
+from urllib import parse, request
 
 
 __VERSION__ = '0.3'
@@ -64,7 +64,7 @@ if __name__ == '__main__':
 
     if args.input:
         if os.path.exists(args.input):
-            with open(args.input, 'r') as fh:
+            with open(args.input, 'rb') as fh:
                 data['content'] = fh.read()
         else:
             print('The file doesn\'t exists.')
@@ -110,14 +110,16 @@ if __name__ == '__main__':
     print(linkode_url)
 
 
-    status, output = commands.getstatusoutput('which xclip')
-    if status == 0:
+    try:
+        output = subprocess.check_output(['which', 'xclip']) \
+                        .decode('utf-8') \
+                        .strip()
         os.system('echo {0} | {1} -selection clipboard'\
                   .format(linkode_url, output)
-        )
+              )
         print('URL copied to clipboard')
-    else:
+    except subprocess.CalledProcessError:
         logging.info('You can install "xclip" to copy the URL to the clipboard')
-
+        
     if args.open:
         webbrowser.open(linkode_url)
