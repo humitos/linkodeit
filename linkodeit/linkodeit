@@ -5,6 +5,7 @@ import sys
 import json
 import logging
 import argparse
+import commands
 
 from six.moves.urllib import parse, request
 
@@ -105,6 +106,11 @@ if __name__ == '__main__':
     print(linkode_url)
 
 
-    # if os.system('whereis xclip') == 0:
-    #     os.system('echo {} | xclip'.format(linkode_url))
-    #     print('URL copied to clipboard')
+    status, output = commands.getstatusoutput('which xclip')
+    if status == 0:
+        os.system('echo {0} | {1} -selection clipboard'\
+                  .format(linkode_url, output)
+        )
+        print('URL copied to clipboard')
+    else:
+        logging.info('You can install "xclip" to copy the URL to the clipboard')
