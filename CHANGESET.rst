@@ -1,3 +1,8 @@
+0.5
+---
+
+* setup.py fixed (pypandoc error).
+
 0.4
 ---
 

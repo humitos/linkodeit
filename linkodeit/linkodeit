@@ -11,7 +11,7 @@ import webbrowser
 from urllib import parse, request
 
 
-__VERSION__ = '0.4'
+__VERSION__ = '0.5'
 
 URLS = {
     'new': ('POST', 'http://linkode.org/api/1/linkodes/'),
