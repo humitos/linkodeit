@@ -1,17 +1,24 @@
-import sys
-
+#!/usr/bin/env python3
+import imp
+import pypandoc
 from distutils.core import setup
 
+# http://stackoverflow.com/q/2601047/2187091
+linkodeit = imp.load_source(name='linkodeit', pathname='linkodeit/linkodeit')
+
+version = linkodeit.__VERSION__
+long_description = pypandoc.convert('README.md', 'rst')
 
 setup(
     name='linkodeit',
-    version='0.3',
+    version=version,
     description='Command-line utility to publish pastes at http://linkode.org',
+    long_description=long_description,
     author='Manuel Kaufmann',
     author_email='humitos@gmail.com',
     url='https://github.com/humitos/linkodeit',
-    download_url='https://github.com/humitos/linkodeit/tarball/0.3',
-    keywords=['linkode', 'pastebin', 'paste'],
+    download_url='https://github.com/humitos/linkodeit/tarball/{}'.format(version),
+    keywords=['linkode', 'pastebin', 'paste', 'share', 'code', 'programming', 'utils'],
     scripts=['linkodeit/linkodeit'],
     classifiers=[
         'Development Status :: 4 - Beta',
