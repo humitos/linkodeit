@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 import imp
-import pypandoc
 from distutils.core import setup
 
 # http://stackoverflow.com/q/2601047/2187091
 linkodeit = imp.load_source(name='linkodeit', pathname='linkodeit/linkodeit')
 
 version = linkodeit.__VERSION__
-long_description = pypandoc.convert('README.md', 'rst')
+
+try:
+    import pypandoc
+    long_description = pypandoc.convert('README.md', 'rst')
+except (ImportError, RuntimeError):
+    long_description = ''
 
 setup(
     name='linkodeit',
