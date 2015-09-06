@@ -32,7 +32,7 @@ Installation
 ------------
 
 ```
-$ sudo pip install linkodeit
+$ sudo pip3 install linkodeit
 ```
 
 Usage
